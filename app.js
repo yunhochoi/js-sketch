@@ -16,10 +16,16 @@ class App{
 
     // Capture Browser Window Resize Event in JavaScript
     window.addEventListener('resize', this.resize.bind(this), false);
-    this.resize();
 
-    // start animation
+    // initialize
+    this.init();
+
+    // start animation per frame
     window.requestAnimationFrame(this.animate.bind(this));
+  }
+
+  init(){
+    this.resize();
   }
 
 
@@ -39,12 +45,6 @@ class App{
     this.wave.draw(this.ctx);
 
     window.requestAnimationFrame(this.animate.bind(this)); 
-
-    // this.ctx.fillStyle = "#112233";
-    // this.ctx.beginPath();
-    // this.ctx.arc(this.stageWidth/2, this.stageHeight/2, 300, 0, 2*Math.PI);
-    // this.ctx.fill();
-
   }
 }
 
