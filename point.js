@@ -1,4 +1,5 @@
 export class Point{
+  //--- The location which moves circle ---//
   constructor(x, y){
     this.x = x;
     this.y = y;
