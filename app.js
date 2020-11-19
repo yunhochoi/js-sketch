@@ -1,6 +1,6 @@
 import { 
-  Wave
-} from './wave.js';
+  WaveGroup
+} from './wavegroup.js';
 
 class App{
   constructor() {
@@ -9,7 +9,7 @@ class App{
     this.ctx = this.canvas.getContext('2d');
     document.body.appendChild(this.canvas);
 
-    this.wave = new Wave();
+    this.waveGroup = new WaveGroup();
 
     // set pixel ratio (2 is for retina)
     this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1;
@@ -31,19 +31,17 @@ class App{
 
   resize()  {
     this.stageWidth = document.body.clientWidth;
-    this.stageHeight = document.body.clientHeight;
-    this.wave.resize(this.stageWidth, this.stageHeight);
+    this.stageHeight = document.body.clientHeight; 
+    this.waveGroup.resizeWaves(this.stageWidth, this.stageHeight);
 
     this.canvas.width = this.stageWidth * this.pixelRatio;
     this.canvas.height = this.stageHeight * this.pixelRatio;
     this.ctx.scale(this.pixelRatio, this.pixelRatio);
-
   }
 
   animate(t) {
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
-    this.wave.draw(this.ctx);
-
+    this.waveGroup.drawWaves(this.ctx); // draw and ctx is always pair
     window.requestAnimationFrame(this.animate.bind(this)); 
   }
 }

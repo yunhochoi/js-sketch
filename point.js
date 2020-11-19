@@ -1,16 +1,16 @@
 export class Point{
   //--- The location which moves circle ---//
-  constructor(x, y){
+  constructor(index, x, y){
     this.x = x;
     this.y = y;
     this.fixedY = y;
-    this.speed = 0.1;
-    this.cur = 0;
-    this.max = Math.random() * 100 + 150;
+    this.speed = 0.05;
+    this.current = index;
+    this.max = Math.random() * 100 + 350;
   }
 
   update() {
-    this.cur += this.speed;
-    this.y = this.fixedY + (Math.sin(this.cur) * this.max);
+    this.current += this.speed;
+    this.y = this.fixedY + (Math.sin(this.current) * this.max);
   } 
 }
